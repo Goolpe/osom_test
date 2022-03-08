@@ -1,12 +1,12 @@
 # osom_test
 
 ## How to Start
-cd express-server
-npm install
-node index.js
+- cd express-server
+- npm install
+- node index.js
 
-set your ipv4 from ipconfig in core/config/api.dart
-flutter run
+- set your ipv4 from ipconfig in core/config/api.dart
+- flutter run
 
 ## Overview
 Create a flutter application where as a user I will be able to perform the following tasks:
