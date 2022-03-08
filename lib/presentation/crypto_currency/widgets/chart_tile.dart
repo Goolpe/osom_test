@@ -23,6 +23,7 @@ class ChartTile extends ConsumerWidget {
     final historyType = ref.watch(historyTypeProvider);
     final historyValue = cryptoCurrencyAsset.activePriceHistory(historyType);
     final historyValueChange = historyValue.change;
+    final priceData = historyValue.priceData;
 
     final chartLines = [
       charts.Series<PriceData, DateTime>(
@@ -30,7 +31,7 @@ class ChartTile extends ConsumerWidget {
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
         domainFn: (PriceData data, _) => data.datetime,
         measureFn: (PriceData data, _) => data.price,
-        data: historyValue.priceData,
+        data: priceData,
       )
     ];
 
@@ -68,18 +69,22 @@ class ChartTile extends ConsumerWidget {
           ),
           SizedBox(
             height: 100,
-            child: charts.TimeSeriesChart(
-              chartLines,
-              animate: false,
-              domainAxis: const charts.DateTimeAxisSpec(
-                showAxisLine: false,
-                renderSpec: charts.NoneRenderSpec(),
-              ),
-              primaryMeasureAxis: const charts.NumericAxisSpec(
-                renderSpec: charts.NoneRenderSpec(),
-                showAxisLine: false,
-              ),
-            ),
+            child: priceData.isEmpty
+                ? const Center(
+                    child: Text('No data found'),
+                  )
+                : charts.TimeSeriesChart(
+                    chartLines,
+                    animate: false,
+                    domainAxis: const charts.DateTimeAxisSpec(
+                      showAxisLine: false,
+                      renderSpec: charts.NoneRenderSpec(),
+                    ),
+                    primaryMeasureAxis: const charts.NumericAxisSpec(
+                      renderSpec: charts.NoneRenderSpec(),
+                      showAxisLine: false,
+                    ),
+                  ),
           ),
           const ChartHistorySelector(),
         ],

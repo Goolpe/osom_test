@@ -1,3 +1,4 @@
+export 'config/api.dart';
 export 'config/assets.dart';
 export 'config/constants.dart';
 export 'config/theme.dart';

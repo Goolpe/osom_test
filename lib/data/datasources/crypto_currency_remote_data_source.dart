@@ -15,7 +15,7 @@ class CryptoCurrencyRemoteDataSourceImpl
 
   @override
   Future<List<CryptoCurrency>> getCryptoCurrencies() async {
-    final List response = await client.get(assetCurrenciesListData);
+    final List response = await client.get(Api.getCurrencies);
 
     final parsedResponse = response
         .cast<Map<String, dynamic>>()
@@ -27,20 +27,11 @@ class CryptoCurrencyRemoteDataSourceImpl
 
   @override
   Future<CryptoCurrencyAsset> getCryptoCurrencyAssetByName(String name) async {
-    final List response = await client.get(assetCurrencyAssetsData);
+    final Map response = await client.get(Api.getCurrency + '?name=$name');
 
-    final parsedResponse = response
-        .cast<Map<String, dynamic>>()
-        .map((e) => CryptoCurrencyAsset.fromJson(e))
-        .toList();
+    final parsedResponse =
+        CryptoCurrencyAsset.fromJson(response.cast<String, dynamic>());
 
-    final cryptoCurrencyAsset =
-        parsedResponse.firstWhereOrNull((element) => element.name == name);
-
-    if (cryptoCurrencyAsset == null) {
-      throw ClientException('No data found');
-    }
-
-    return cryptoCurrencyAsset;
+    return parsedResponse;
   }
 }
