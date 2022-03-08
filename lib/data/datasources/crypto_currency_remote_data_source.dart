@@ -1,4 +1,3 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:osom_test/core/core.dart';
 import 'package:osom_test/domain/entities/crypto_currency.dart';
 import 'package:osom_test/domain/entities/crypto_currency_asset.dart';

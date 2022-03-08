@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:osom_test/core/core.dart';
 import 'package:osom_test/domain/entities/crypto_currency.dart';
 import 'package:osom_test/presentation/crypto_currencies/widgets/theme_button.dart';
-import 'package:osom_test/presentation/providers/theme_mode_provider.dart';
 import 'package:osom_test/presentation/widgets/widgets.dart';
 
 import '../providers/crypto_currencies_provider.dart';

@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:osom_test/core/config/constants.dart';
 import 'package:osom_test/core/core.dart';
-import 'package:osom_test/domain/entities/crypto_currency_asset.dart';
 import 'package:osom_test/presentation/crypto_currency/widgets/about_tile.dart';
 import 'package:osom_test/presentation/widgets/widgets.dart';
 
 import '../providers/crypto_currency_provider.dart';
 import '../providers/get_crypto_currency_provider.dart';
-import '../widgets/alert_tile.dart';
 import '../widgets/alerts_tile.dart';
 import '../widgets/chart_tile.dart';
 import '../widgets/info_tile.dart';
